@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  self-healing-agent:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - CLOUD_PROVIDER=MOCK
+      - MAX_SELF_HEALING_RETRIES=3
+      - LLM_API_KEY=mock
+    restart: unless-stopped
